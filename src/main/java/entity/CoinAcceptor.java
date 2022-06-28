@@ -1,5 +1,17 @@
 package entity;
 
-public class CoinAcceptor {
+public class CoinAcceptor  {
     int coin;
+
+    private void payment () {
+
+    }
+
+    private void winOrNotWin () {
+
+    }
+
+
+
+
 }
