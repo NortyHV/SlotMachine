@@ -22,20 +22,21 @@ public class CoinAcceptor  {
     }
 
     private boolean isWin() {
-        return (Math.random()<=0.2d);
+        return (attempts % 5 == 0);
     }
 
     public void winOrNotWin () {
-        while (attempts-->0) {
+        while (attempts>0) {
             if (isWin()) {
                 services.write("WIN");
                 if (--toys<2) {
-                    services.write("no toys");
+                    services.write("Извените, игрушек нет. Обратитесь в сервисную службу по номеру 888 88 88");
+                    break;
                 }
             } else {
                 services.write("Lose");
             }
-
+            attempts--;
         }
     }
 
@@ -55,6 +56,8 @@ public class CoinAcceptor  {
 
     public void run() {
         int a;
+        services.write("Здравствуйте, если хотите ссыграть в игру, киньте монетку номиналами: 50, 100 или 200 копеек.");
+        services.write("Для выхода нажмите кнопку 'exit'" );
         while ((a = readOperation()) != 0) {
             payment(a);
             winOrNotWin();
